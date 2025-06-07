@@ -1,0 +1,30 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+.main-content {
+  margin-left: 258px;
+  background-color: #f9fafb;
+  transition: margin-left 0.2s ease-in-out;
+  overflow-y: hidden;
+  padding: 20px;
+  margin-top: 4rem;
+}
+
+.page-content {
+  background-color: #f9fafb;
+}
+
+@media (max-width: 1024px) {
+  .page-content {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .main-content {
+    margin-left: 0;
+  }
+}

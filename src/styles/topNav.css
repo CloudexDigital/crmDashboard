@@ -1,0 +1,112 @@
+.topnav {
+  position: fixed;
+  top: 0;
+  left: 258px; /* same as your sidebar width */
+  right: 0;
+  height: 64px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  z-index: 30;
+}
+
+/* If sidebar collapses on small screens */
+@media (max-width: 1024px) {
+  .topnav {
+    left: 0;
+  }
+}
+
+.topnav .left {
+  display: flex;
+  align-items: center;
+}
+
+.topnav .left .menu-toggle {
+  font-size: 1.25rem;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.menu-toggle {
+  display: inline-block;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Hide hamburger on desktop */
+@media (min-width: 1024px) {
+  .menu-toggle {
+    display: none;
+  }
+}
+
+
+.topnav .left h1 {
+  margin-left: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937; 
+}
+
+.topnav .right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.topnav .icon-btn {
+  position: relative;
+  font-size: 1.25rem;
+  color: #6b7280;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.topnav .icon-btn .notification-dot {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: #ef4444; 
+  border-radius: 9999px;
+}
+
+.topnav .search-wrapper {
+  position: relative;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .topnav .search-wrapper {
+    display: block;
+  }
+}
+
+.topnav .search-wrapper input {
+  padding: 0.8rem 4em 0.8rem 2.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.topnav .search-wrapper input:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 2px #6366f1; 
+}
+
+.topnav .search-wrapper i {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  color: #9ca3af;
+  padding-top: 3px;
+}
