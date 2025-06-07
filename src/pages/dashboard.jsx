@@ -1,7 +1,14 @@
-import '../styles/dashboard.css'
+import "../styles/dashboard.css"
+import DashboardStats from "../components/dashboardStats";
+import RecentClients from "../components/recentClients";
 
 const Dashboard = () => {
-  return <h1>Dashboard Page</h1>;
+  return (
+    <div className="dashboard">
+      <DashboardStats />
+      <RecentClients/>
+    </div>
+  );
 };
 
 export default Dashboard;
