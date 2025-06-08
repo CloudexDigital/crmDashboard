@@ -1,7 +1,7 @@
 .topnav {
   position: fixed;
   top: 0;
-  left: 258px; /* same as your sidebar width */
+  left: 258px;
   right: 0;
   height: 64px;
   background-color: white;

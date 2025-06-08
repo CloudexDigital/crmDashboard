@@ -1,9 +1,16 @@
 import "../styles/RecentClients.css";
 
-const RecentClients = () => {
+export default function RecentClients({ openModal, clients = [] }) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const upcomingMaintenance = clients.filter((client) => {
+    const maintenanceDate = new Date(client.maintenanceDate);
+    return maintenanceDate > today;
+  });
+
   return (
     <div className="recent-clients-grid">
-      {/* Recent Clients Table */}
       <div className="recent-clients-table">
         <div className="table-header">
           <h2>Recent Clients</h2>
@@ -16,32 +23,52 @@ const RecentClients = () => {
                 <th>Website</th>
                 <th>Next Maintenance</th>
                 <th>Status</th>
-                <th className="sr-only">Actions</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td colSpan="5" className="no-data">
-                  No clients found.{" "}
-                  <button className="add-client-btn-card">Add a new client</button>
-                </td>
-              </tr>
+              {clients.length === 0 ? (
+                <tr>
+                  <td colSpan="4" className="no-data">
+                    <p>No clients found.</p>
+                    <button className="add-client-btn-card" onClick={openModal}>
+                      Add a new client
+                    </button>
+                  </td>
+                </tr>
+              ) : (
+                clients.map((client, i) => (
+                  <tr key={i}>
+                    <td>{client.fullName}</td>
+                    <td>{client.websiteUrl}</td>
+                    <td>{new Date(client.maintenanceDate).toLocaleDateString()}</td>
+                    <td>{client.status}</td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>
       </div>
 
-      {/* Upcoming Maintenance */}
       <div className="upcoming-maintenance">
         <div className="table-header">
           <h2>Upcoming Maintenance</h2>
         </div>
         <div className="maintenance-body">
-          <p>No upcoming maintenance tasks</p>
+          {upcomingMaintenance.length === 0 ? (
+            <p>No upcoming maintenance tasks</p>
+          ) : (
+            <ul>
+              {upcomingMaintenance.map((client, i) => (
+                <li key={i}>
+                  <strong>{client.fullName}</strong> —{" "}
+                  {new Date(client.maintenanceDate).toLocaleDateString()}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </div>
   );
-};
-
-export default RecentClients;
+}

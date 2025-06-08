@@ -7,12 +7,18 @@ import './styles/App.css'
 const App = () => {
   return (
     <Router>
-      <MainLayout>
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/client" element={<Client />} />
-        </Routes>
-      </MainLayout>
+      <Routes>
+        <Route path="/" element={
+          <MainLayout>
+            <Dashboard />
+          </MainLayout>
+        } />
+        <Route path="/client" element={
+          <MainLayout>
+            <Client />
+          </MainLayout>
+        } />
+      </Routes>
     </Router>
   );
 };

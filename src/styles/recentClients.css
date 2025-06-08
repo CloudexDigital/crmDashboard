@@ -20,12 +20,12 @@
 }
 
 .table-header {
-  padding: 1rem;
+  padding: 4px 1rem;
   border-bottom: 1px solid #e5e7eb;
 }
 
 .table-header h2 {
-  font-size: 1.125rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: #1f2937;
 }
@@ -53,9 +53,10 @@ td {
 }
 
 th {
-  font-weight: 600;
+  font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  font-size: 12px;
 }
 
 tbody tr {

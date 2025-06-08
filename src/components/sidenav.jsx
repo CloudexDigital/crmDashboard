@@ -1,7 +1,15 @@
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 import "../styles/sidenav.css";
 
-export default function Sidebar({ isOpen, toggleSidebar }) {
+export default function Sidebar({ isOpen, toggleSidebar, openModal }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleSaveClient = () => {
+    // Save logic (optional)
+    setIsModalOpen(false);
+  };
+
   return (
     <>
       {isOpen && (
@@ -27,9 +35,13 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
             <i className="fas fa-times"></i>
           </button>
         </div>
+
         <div className="sidebar-content">
           <div>
-            <button className="add-client-btn">
+            <button
+              className="add-client-btn"
+              onClick={openModal}
+            >
               <i className="fas fa-plus"></i>
               <span>Add New Client</span>
             </button>
@@ -52,21 +64,21 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
             >
               <i className="fas fa-users"></i> Clients
             </NavLink>
-             <NavLink
+            <NavLink
               to="/main"
               className={({ isActive }) =>
                 `nav-link ${isActive ? "active" : ""}`
               }
             >
-              <i className="fas fa-users"></i> Maintinance
+              <i className="fas fa-tools"></i> Maintenance
             </NavLink>
-             <NavLink
+            <NavLink
               to="/rep"
               className={({ isActive }) =>
                 `nav-link ${isActive ? "active" : ""}`
               }
             >
-              <i className="fas fa-users"></i> Reports
+              <i className="fas fa-file-alt"></i> Reports
             </NavLink>
           </nav>
 
