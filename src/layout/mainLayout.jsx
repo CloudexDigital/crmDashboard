@@ -13,6 +13,20 @@ const MainLayout = ({ children }) => {
 
   const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
   const [selectedClient, setSelectedClient] = useState(null);
+  const [refreshKey, setRefreshKey] = useState(0); // 🔹 Force re-render key
+
+  const refreshClients = async () => {
+    try {
+      const response = await fetch("http://localhost:4000/api/clients");
+      if (!response.ok) throw new Error("Failed to fetch clients");
+
+      const data = await response.json();
+      setClients(data); // ✅ Update client list
+      setRefreshKey((prevKey) => prevKey + 1); // ✅ Force a component refresh
+    } catch (error) {
+      console.error("Error refreshing clients:", error);
+    }
+  };
 
   const openDetailsModal = (client) => {
     setSelectedClient(client);
@@ -29,7 +43,7 @@ const MainLayout = ({ children }) => {
 
   const handleSave = async (newClient) => {
     try {
-      const response = await fetch("http://localhost:5000/api/clients", {
+      const response = await fetch("http://localhost:4000/api/clients", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newClient),
@@ -82,6 +96,8 @@ const MainLayout = ({ children }) => {
           isOpen={isDetailsModalOpen}
           onClose={closeDetailsModal}
           client={selectedClient}
+          setClients={setClients}
+          refreshClients={refreshClients}
         />
       </div>
     </>

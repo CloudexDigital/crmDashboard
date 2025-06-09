@@ -1,9 +1,29 @@
+import { useState, useEffect } from "react";
 import "../styles/RecentClients.css";
 
-export default function RecentClients({ openModal, clients = [], openDetailsModal }) {
+export default function RecentClients({ openModal, openDetailsModal }) {
+  const [clients, setClients] = useState([]); // 🔹 Store fetched clients
+
+  // ✅ Fetch clients on component mount
+  useEffect(() => {
+    const fetchClients = async () => {
+      try {
+        const response = await fetch("http://localhost:4000/api/clients"); // 🔹 Update URL if needed
+        if (!response.ok) throw new Error("Failed to fetch clients");
+
+        const data = await response.json();
+        setClients(data); // 🔹 Store retrieved clients
+      } catch (error) {
+        console.error("Error fetching clients:", error);
+      }
+    };
+
+    fetchClients();
+  }, []);
+
+  // ✅ Filter upcoming maintenance clients
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-
   const upcomingMaintenance = clients.filter((client) => {
     const maintenanceDate = new Date(client.maintenanceDate);
     return maintenanceDate > today;
@@ -56,26 +76,25 @@ export default function RecentClients({ openModal, clients = [], openDetailsModa
                     <td className="url-table">
                       <div className="company-url">
                         <a
-                          href={`https://${client.websiteUrl.replace(
-                            /^https?:\/\//,
-                            ""
-                          )}`}
+                          href={`https://${
+                            client.websiteUrl
+                              ? client.websiteUrl.replace(/^https?:\/\//, "")
+                              : ""
+                          }`}
                           target="_blank"
                           rel="noopener noreferrer"
                         >
                           {client.websiteUrl
-                            .replace(/^https?:\/\/(www\.)?/, "")
-                            .replace(/^www\./, "")}
+                            ? client.websiteUrl
+                                .replace(/^https?:\/\/(www\.)?/, "")
+                                .replace(/^www\./, "")
+                            : "No Website"}
                         </a>
                       </div>
                       <div className="hosted-date">
                         {new Date(client.hostingDate).toLocaleDateString(
                           "en-GB",
-                          {
-                            day: "2-digit",
-                            month: "short",
-                            year: "numeric",
-                          }
+                          { day: "2-digit", month: "short", year: "numeric" }
                         )}
                       </div>
                     </td>
@@ -111,8 +130,14 @@ export default function RecentClients({ openModal, clients = [], openDetailsModa
                     </td>
                     {/* Actions */}
                     <td className="action-icons">
-                      <button className="fas fa-eye view-icon" onClick={() => openDetailsModal(client)}></button>
-                      <button className="delete fas fa-trash-alt delete-icon" title="Delete"></button>
+                      <button
+                        className="fas fa-eye view-icon"
+                        onClick={() => openDetailsModal(client)}
+                      ></button>
+                      <button
+                        className="delete fas fa-trash-alt delete-icon"
+                        title="Delete"
+                      ></button>
                     </td>
                   </tr>
                 ))

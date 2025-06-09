@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/clientDetailsCard.css";
 
-const ClientDetailsModal = ({ isOpen, onClose, client }) => {
+const ClientDetailsModal = ({ isOpen, onClose, client, refreshClients }) => {
   if (!isOpen || !client) return null;
 
   const [isEditing, setIsEditing] = useState(false);
@@ -22,11 +22,27 @@ const ClientDetailsModal = ({ isOpen, onClose, client }) => {
     setClientForm({ ...clientForm, [name]: value });
   };
 
-  const handleSave = () => {
-    console.log("Saving:", clientForm);
-    setIsEditing(false);
-    setClientForm({}); // Clear form after saving
-    onClose(); // Optional: close modal after save
+  const handleSave = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:4000/api/clients/${clientForm._id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(clientForm),
+        }
+      );
+
+      if (!response.ok) throw new Error("Failed to update client");
+
+      const updatedClient = await response.json();
+
+      refreshClients(); // ✅ Trigger re-fetch and force refresh
+      setIsEditing(false);
+      onClose();
+    } catch (error) {
+      console.error("Error updating client:", error);
+    }
   };
 
   return (
