@@ -1,12 +1,32 @@
+import React, { useState, useEffect } from "react";
 import "../styles/clientDetailsCard.css";
 
-const ClientDetailsModal = ({ isOpen, onClose, onEdit, client }) => {
+const ClientDetailsModal = ({ isOpen, onClose, client }) => {
   if (!isOpen || !client) return null;
+
+  const [isEditing, setIsEditing] = useState(false);
+  const [clientForm, setClientForm] = useState({});
+
+  useEffect(() => {
+    setClientForm(client);
+  }, [client]);
 
   const formatDate = (dateStr) => {
     if (!dateStr) return "";
     const options = { year: "numeric", month: "short", day: "numeric" };
     return new Date(dateStr).toLocaleDateString(undefined, options);
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setClientForm({ ...clientForm, [name]: value });
+  };
+
+  const handleSave = () => {
+    console.log("Saving:", clientForm);
+    setIsEditing(false);
+    setClientForm({}); // Clear form after saving
+    onClose(); // Optional: close modal after save
   };
 
   return (
@@ -25,75 +45,181 @@ const ClientDetailsModal = ({ isOpen, onClose, onEdit, client }) => {
 
         <main className="modal-body">
           <div className="modal-flex">
+            {/* LEFT SIDE */}
             <section className="modal-left">
               <div className="profile-card">
                 <i className="fas fa-user-circle avatar-icon-2"></i>
-                <h4>{client.fullName}</h4>
-                <p>{client.companyName}</p>
+                {isEditing ? (
+                  <>
+                    <input
+                      className="editable-input"
+                      name="fullName"
+                      value={clientForm.fullName || ""}
+                      onChange={handleChange}
+                    />
+                    <input
+                      className="editable-input"
+                      name="companyName"
+                      value={clientForm.companyName || ""}
+                      onChange={handleChange}
+                    />
+                  </>
+                ) : (
+                  <>
+                    <h4>{client.fullName}</h4>
+                    <p>{client.companyName}</p>
+                  </>
+                )}
                 <div className={`status-badge2 ${client.status}`}>
-                  {client.status
-                    .replace("-", " ")
-                    .replace(/^\w/, (c) => c.toUpperCase())}
+                  {isEditing ? (
+                    <select
+                      className={`status-select ${clientForm.status}`}
+                      name="status"
+                      value={clientForm.status}
+                      onChange={handleChange}
+                    >
+                      <option value="active">Active</option>
+                      <option value="inactive">Inactive</option>
+                      <option value="onhold">On Hold</option>
+                      <option value="pending">Pending</option>
+                    </select>
+                  ) : (
+                    <span
+                      className={`status-badge2 ${client.status.toLowerCase()}`}
+                    >
+                      {client.status}
+                    </span>
+                  )}
                 </div>
               </div>
 
               <div className="contact-info">
                 <div className="contact-row">
                   <i className="fas fa-envelope contact-icon" />
-                  <p>{client.email}</p>
+                  {isEditing ? (
+                    <input
+                      className="editable-input-contact"
+                      name="email"
+                      value={clientForm.email || ""}
+                      onChange={handleChange}
+                    />
+                  ) : (
+                    <p>{client.email}</p>
+                  )}
                 </div>
                 <div className="contact-row">
                   <i className="fas fa-phone contact-icon" />
-                  <p>{client.phone}</p>
+                  {isEditing ? (
+                    <input
+                      className="editable-input-contact"
+                      name="phone"
+                      value={clientForm.phone || ""}
+                      onChange={handleChange}
+                    />
+                  ) : (
+                    <p>{client.phone}</p>
+                  )}
                 </div>
                 <div className="contact-row">
                   <i className="fas fa-globe contact-icon" />
-                  <p>
-                    {client.websiteUrl
-                      .replace(/^https?:\/\/(www\.)?/, "")
-                      .replace(/^www\./, "")}
-                  </p>
+                  {isEditing ? (
+                    <input
+                      className="editable-input-contact"
+                      name="websiteUrl"
+                      value={clientForm.websiteUrl || ""}
+                      onChange={handleChange}
+                    />
+                  ) : (
+                    <p>
+                      {client.websiteUrl.replace(/^https?:\/\/(www\.)?/, "")}
+                    </p>
+                  )}
                 </div>
               </div>
             </section>
 
+            {/* RIGHT SIDE */}
             <section className="modal-right">
               <h4>Project Information</h4>
               <div className="project-grid">
-                <div>
-                  <label>Hosting Date</label>
-                  <p>{formatDate(client.hostingDate)}</p>
-                </div>
-                <div>
-                  <label>Next Maintenance</label>
-                  <p>{formatDate(client.maintenanceDate)}</p>
-                </div>
-                <div>
-                  <label>Monthly Fee</label>
-                  <p>R{" "}{client.monthlyFee}</p>
-                </div>
-                <div>
-                  <label>Website Cost</label>
-                  <p>R{" "}{client.devPrice}</p>
-                </div>
-                <div>
-                  <label>Maintenance Plan</label>
-                  <p>{client.hasMaintenance ? "Yes" : "No"}</p>
-                </div>
+                {[
+                  { label: "Hosting Date", name: "hostingDate" },
+                  { label: "Next Maintenance", name: "maintenanceDate" },
+                  { label: "Monthly Fee", name: "monthlyFee" },
+                  { label: "Website Cost", name: "devPrice" },
+                  { label: "Maintenance Plan", name: "hasMaintenance" },
+                ].map(({ label, name }) => (
+                  <div key={name}>
+                    <label>{label}</label>
+                    {isEditing ? (
+                      name === "hasMaintenance" ? (
+                        <select
+                          className="editable-input-right"
+                          name="hasMaintenance"
+                          value={clientForm.hasMaintenance ? "true" : "false"}
+                          onChange={(e) =>
+                            setClientForm({
+                              ...clientForm,
+                              hasMaintenance: e.target.value === "true",
+                            })
+                          }
+                        >
+                          <option value="true">Yes</option>
+                          <option value="false">No</option>
+                        </select>
+                      ) : (
+                        <input
+                          className="editable-input-right"
+                          name={name}
+                          value={clientForm[name] || ""}
+                          onChange={handleChange}
+                        />
+                      )
+                    ) : (
+                      <p>
+                        {name.includes("Date")
+                          ? formatDate(client[name])
+                          : name === "hasMaintenance"
+                          ? client[name]
+                            ? "Yes"
+                            : "No"
+                          : client[name]}
+                      </p>
+                    )}
+                  </div>
+                ))}
               </div>
 
               <div className="notes-section">
                 <label>Notes</label>
-                <p>{client.notes}</p>
+                {isEditing ? (
+                  <textarea
+                    className="editable-textarea-right"
+                    name="notes"
+                    value={clientForm.notes || ""}
+                    onChange={handleChange}
+                  />
+                ) : (
+                  <p>{client.notes}</p>
+                )}
               </div>
 
               <div className="modal-actions">
                 <button onClick={onClose} className="btn-secondary">
                   Close
                 </button>
-                <button onClick={onEdit} className="btn-primary">
-                  Edit
-                </button>
+                {!isEditing ? (
+                  <button
+                    onClick={() => setIsEditing(true)}
+                    className="btn-primary"
+                  >
+                    Edit
+                  </button>
+                ) : (
+                  <button onClick={handleSave} className="btn-primary">
+                    Save
+                  </button>
+                )}
               </div>
             </section>
           </div>

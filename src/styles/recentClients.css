@@ -250,7 +250,8 @@ tbody tr {
 .action-icons {
   display: flex;
   gap: 12px;
-  align-items: right;
+  text-align: center;
+  align-items: center;
   font-size: 14px;
   padding-left: 40px;
 }

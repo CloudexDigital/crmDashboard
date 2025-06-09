@@ -81,30 +81,20 @@
 
 /* Profile card with avatar on top left */
 .profile-card {
-  background: #e0e7ff;
+  background: #E0E7FF;
   border-radius: 10px;
   padding: 20px;
   text-align: center;
 }
 
 .avatar-icon-2 {
-  font-size: 90px;
-  color: white;
-  border-radius: 50%;
-  padding: 20px;
+  font-size: 100px;
+  color: #fff;
+  border-radius: 55%;
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 40px;
-  height: 40px;
-  margin-bottom: 1rem;
   background-color: #6466f1;
-}
-
-.profile-icon {
-  font-size: 4rem;
-  margin-bottom: 0.5rem;
-  color: #6466f1;
 }
 
 .profile-card h4 {
@@ -261,4 +251,91 @@ font-size: 13px;
   .modal-right {
     max-width: 100%;
   }
+}
+
+
+/* editable fields */
+.editable-input,
+.editable-textarea {
+  width: 90%;
+  padding: 8px 12px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border 0.2s ease;
+}
+
+.editable-input-contact,
+.editable-textarea {
+  width: 100%;
+  padding: 8px 12px;
+  margin-top: 4px;
+  margin-bottom: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border 0.2s ease;
+}
+
+
+.editable-input-right,
+.editable-textarea-right {
+  width: 90%;
+  padding: 8px 12px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border 0.2s ease;
+}
+
+.editable-input:focus,
+.editable-textarea:focus {
+  outline: none;
+  border-color: #6466f1;
+}
+
+.editable-input-right:focus,
+.editable-textarea:focus {
+  outline: none;
+  border-color: #6466f1;
+}
+
+
+.editable-textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+
+.status-select {
+  padding: 6px 12px;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  border: 1px solid #DCFCE7;
+  cursor: pointer;
+  outline: none;
+  text-transform: capitalize;
+}
+
+.status-select.active {
+  background-color: #dcfce7;
+  color: #166434;
+}
+
+.status-select.inactive {
+  background-color: #f98484;
+  color: #ff0707;
+}
+
+.status-select.onhold {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.status-select.pending {
+  background-color: #dbeafe;
+  color: #1e3a8a;
 }

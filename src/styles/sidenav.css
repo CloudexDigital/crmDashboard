@@ -32,9 +32,9 @@ body{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 4rem; /* 16 */
-  padding: 0 1rem; /* 4 */
-  background-color: #6466F1; /* bg-primary (indigo-600) */
+  height: 4rem;
+  padding: 0 1rem;
+  background-color: #6466F1; 
   color: white;
 }
 
@@ -80,7 +80,7 @@ body{
   gap: 0.5rem;
   background-color: #6466F1;
   color: white;
-  padding: 10px 20px;
+  padding: 9px 20px;
   border-radius: 10px;
   border-color: transparent;
   transition: background 0.2s ease-in-out;
@@ -90,7 +90,7 @@ body{
 }
 
 .add-client-btn:hover {
-  background-color: #4338ca; /* hover:bg-indigo-700 */
+  background-color: #4338ca;
 }
 
 /* === Navigation Links === */
@@ -98,9 +98,9 @@ body{
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.8rem 1rem;
+  padding: 0.7rem 0.6rem;
   border-radius: 0.5rem;
-  color: #374151; /* default text */
+  color: #374151;
   text-decoration: none;
   transition: background 0.2s, color 0.2s;
   font-size: 0.95rem;
@@ -108,9 +108,8 @@ body{
 
 /* Active Link */
 .sidebar-nav .nav-link.active {
-  background-color: #eef2ff; /* bg-indigo-50 */
-  color: #4f46e5; /* text-indigo-600 */
-  font-weight: 600;
+  background-color: #EEF2FF; /* bg-indigo-50 */
+  color: #6466F1; /* text-indigo-600 */
 }
 
 /* Hover effect */
