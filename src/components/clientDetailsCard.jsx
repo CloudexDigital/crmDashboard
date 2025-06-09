@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 import "../styles/clientDetailsCard.css";
 
 const ClientDetailsModal = ({ isOpen, onClose, client, refreshClients }) => {
@@ -37,7 +38,8 @@ const ClientDetailsModal = ({ isOpen, onClose, client, refreshClients }) => {
 
       const updatedClient = await response.json();
 
-      refreshClients(); // ✅ Trigger re-fetch and force refresh
+      refreshClients();
+      toast.success("Client updated successfully!", { position: "top-right" });
       setIsEditing(false);
       onClose();
     } catch (error) {
