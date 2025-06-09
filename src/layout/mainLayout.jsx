@@ -3,18 +3,32 @@ import { useState } from "react";
 import Sidebar from "../components/sidenav";
 import TopNav from "../components/TopNav";
 import AddClientModal from "../components/clientModal";
+import ClientDetailsModal from "../components/clientDetailsCard";
 import "../styles/mainLayout.css";
 
 const MainLayout = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [clients, setClients] = useState([]);
-  
+
+  const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
+  const [selectedClient, setSelectedClient] = useState(null);
+
+  const openDetailsModal = (client) => {
+    setSelectedClient(client);
+    setIsDetailsModalOpen(true);
+  };
+
+  const closeDetailsModal = () => {
+    setSelectedClient(null);
+    setIsDetailsModalOpen(false);
+  };
+
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
   const handleSave = (newClient) => {
-    setClients((prevClients) => [...prevClients, newClient]); 
+    setClients((prevClients) => [...prevClients, newClient]);
     setIsModalOpen(false);
   };
 
@@ -35,7 +49,7 @@ const MainLayout = ({ children }) => {
 
         <main className="main-content">
           {React.isValidElement(children)
-            ? React.cloneElement(children, { openModal, clients })
+            ? React.cloneElement(children, { openModal, clients, openDetailsModal })
             : children}
         </main>
 
@@ -44,6 +58,8 @@ const MainLayout = ({ children }) => {
           onClose={() => setIsModalOpen(false)}
           onSave={handleSave}
         />
+
+        <ClientDetailsModal isOpen={openDetailsModal} onClose={closeDetailsModal} client={selectedClient}/>
       </div>
     </>
   );

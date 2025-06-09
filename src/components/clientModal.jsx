@@ -31,7 +31,7 @@ const AddClientModal = ({ isOpen, onClose, onSave }) => {
     e.preventDefault();
     const client = {
       ...formData,
-      websiteUrl: `https://${formData.websiteUrl}`,
+      websiteUrl: `https://${formData.websiteUrl.replace(/^https?:\/\//, "")}`,
     };
     onSave(client);
     onClose();
@@ -49,17 +49,17 @@ const AddClientModal = ({ isOpen, onClose, onSave }) => {
 
         <form onSubmit={handleSubmit} className="modal-form">
           <div className="form-group">
-            <label>Full Name*</label>
+            <label>Full Name</label>
             <input name="fullName" required value={formData.fullName} onChange={handleChange} />
           </div>
 
           <div className="form-group">
-            <label>Company Name*</label>
+            <label>Company Name</label>
             <input name="companyName" required value={formData.companyName} onChange={handleChange} />
           </div>
 
           <div className="form-group">
-            <label>Email*</label>
+            <label>Email</label>
             <input name="email" type="email" required value={formData.email} onChange={handleChange} />
           </div>
 
@@ -69,7 +69,7 @@ const AddClientModal = ({ isOpen, onClose, onSave }) => {
           </div>
 
           <div className="form-group">
-            <label>Website URL*</label>
+            <label>Website URL</label>
             <div className="url-input">
               <span>https://</span>
               <input name="websiteUrl" required value={formData.websiteUrl} onChange={handleChange} />
@@ -77,12 +77,12 @@ const AddClientModal = ({ isOpen, onClose, onSave }) => {
           </div>
 
           <div className="form-group">
-            <label>Hosting Date*</label>
+            <label>Hosting Date</label>
             <input type="date" name="hostingDate" required value={formData.hostingDate} onChange={handleChange} />
           </div>
 
           <div className="form-group">
-            <label>Maintenance Date*</label>
+            <label>Maintenance Date</label>
             <input type="date" name="maintenanceDate" required value={formData.maintenanceDate} onChange={handleChange} />
           </div>
 
@@ -92,7 +92,7 @@ const AddClientModal = ({ isOpen, onClose, onSave }) => {
           </div>
 
           <div className="form-group">
-            <label>Development Price ($)</label>
+            <label>Development Price</label>
             <input type="number" name="devPrice" value={formData.devPrice} onChange={handleChange} />
           </div>
 
@@ -102,7 +102,7 @@ const AddClientModal = ({ isOpen, onClose, onSave }) => {
           </div>
 
           <div className="form-group">
-            <label>Status*</label>
+            <label>Status</label>
             <select name="status" value={formData.status} onChange={handleChange}>
               <option value="active">Active</option>
               <option value="inactive">Inactive</option>

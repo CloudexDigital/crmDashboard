@@ -1,0 +1,264 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 1rem;
+}
+
+.modal-container {
+  background: #fff;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  padding: 2px 20px 2px 0;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111;
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  color: #000;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+/* Flex container for left and right */
+.modal-flex {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: nowrap;
+  min-height: 300px;
+}
+
+/* Left column: avatar + contact stacked */
+.modal-left {
+  flex: 1;
+  max-width: 300px;
+}
+
+/* Right column: project info */
+.modal-right {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-right h4 {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 11px;
+  margin-top: 3px;
+}
+
+/* Profile card with avatar on top left */
+.profile-card {
+  background: #e0e7ff;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+.avatar-icon-2 {
+  font-size: 90px;
+  color: white;
+  border-radius: 50%;
+  padding: 20px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 1rem;
+  background-color: #6466f1;
+}
+
+.profile-icon {
+  font-size: 4rem;
+  margin-bottom: 0.5rem;
+  color: #6466f1;
+}
+
+.profile-card h4 {
+  font-weight: 700;
+  font-size: 18px;
+  margin: 0.25rem 0 0.5rem;
+  color: #000;
+}
+
+.profile-card p {
+  margin: 0 0 0.75rem;
+  color: gray;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.status-badge2 {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  display: inline-block;
+}
+
+.status-badge2.active {
+  background-color: #dcfce7;
+  color: #166434;
+}
+
+.status-badge2.inactive {
+  background-color: #f98484;
+  color: #ff0707;
+}
+
+/* Contact info stacked vertically */
+.contact-info {
+  padding: 1rem;
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 14px;
+  color: #374151;
+  margin-bottom: -10px;
+}
+
+.contact-icon {
+  font-size: 1rem;
+  color: #6b7280;
+  min-width: 20px;
+  text-align: center;
+}
+
+.contact-row a {
+  color: #000;
+  text-decoration: none;
+}
+
+.contact-row{
+font-size: 13px;
+}
+
+.contact-row a:hover {
+  text-decoration: underline;
+}
+
+/* Project grid with 2 columns */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(120px, 1fr));
+  gap: 1.25rem;
+  margin-top: -9px;
+  margin-bottom: 1.5rem;
+}
+
+.project-grid label {
+  color: #6b7280;
+  font-size: 12px;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.project-grid p {
+  font-size: 14px;
+  color: #111827;
+  margin: 0;
+}
+
+/* Notes section */
+.notes-section {
+  border-bottom: 1px solid #d1d5db;
+  padding-top: 2px;
+  margin-bottom: 1.5rem;
+}
+
+.notes-section label {
+  color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.notes-section p {
+  color: #374151;
+  line-height: 1.4;
+  font-size: 14px;
+}
+
+/* Modal action buttons */
+.modal-actions {
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+/* Buttons */
+.btn-primary,
+.btn-secondary {
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #6466f1;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #6466f1a3;
+}
+
+.btn-secondary {
+  border:1px solid #e5e7eb;
+  color: #374151;
+}
+
+.btn-secondary:hover {
+  background-color: #d1d5db;
+}
+
+/* Responsive */
+@media (max-width: 720px) {
+  .modal-flex {
+    flex-direction: column;
+  }
+  .modal-left,
+  .modal-right {
+    max-width: 100%;
+  }
+}
