@@ -54,7 +54,7 @@ const DashboardStats = () => {
       <div className="card border-warning">
         <div className="card-content">
           <div className="text">
-            <p className="label">Upcoming Renewals</p>
+            <p className="label">Upcoming Maintenance</p>
             <h3 className="value">{stats.upcomingRenewals}</h3>
           </div>
           <div className="icon bg-yellow">

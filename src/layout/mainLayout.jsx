@@ -18,11 +18,10 @@ const MainLayout = ({ children }) => {
   const refreshClients = async () => {
     try {
       const response = await fetch("http://localhost:4000/api/clients");
-      if (!response.ok) throw new Error("Failed to fetch clients");
-
+      console.log("Response status:", response.status); // ✅ Debugging
       const data = await response.json();
-      setClients(data); // ✅ Update client list
-      setRefreshKey((prevKey) => prevKey + 1); // ✅ Force a component refresh
+      console.log("Fetched Clients:", data); // ✅ Debugging
+      setClients(data);
     } catch (error) {
       console.error("Error refreshing clients:", error);
     }
@@ -58,6 +57,7 @@ const MainLayout = ({ children }) => {
       setIsModalOpen(false);
     } catch (error) {
       console.error("Failed to save client:", error);
+      toast.error("Error saving client");
     }
   };
 

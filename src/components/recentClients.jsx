@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import "../styles/RecentClients.css";
 
 export default function RecentClients({ openModal, openDetailsModal }) {
-  const [clients, setClients] = useState([]); // 🔹 Store fetched clients
+  const [clients, setClients] = useState([]);
+  console.log("Clients in State:", clients); // ✅ Debugging step
 
   // ✅ Fetch clients on component mount
   useEffect(() => {
@@ -12,6 +13,7 @@ export default function RecentClients({ openModal, openDetailsModal }) {
         if (!response.ok) throw new Error("Failed to fetch clients");
 
         const data = await response.json();
+        console.log("Fetched Clients from API:", data); 
         setClients(data); // 🔹 Store retrieved clients
       } catch (error) {
         console.error("Error fetching clients:", error);
@@ -65,9 +67,7 @@ export default function RecentClients({ openModal, openDetailsModal }) {
                         <i className="fas fa-user-circle avatar-icon"></i>
                         <div>
                           <div className="full-name">{client.fullName}</div>
-                          <div className="company-name">
-                            {client.companyName}
-                          </div>
+                          <div className="company-name">{client.companyName}</div>
                         </div>
                       </div>
                     </td>

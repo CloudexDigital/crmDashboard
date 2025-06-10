@@ -1,0 +1,123 @@
+/* Improve spacing & font size */
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f4f7f9;
+  color: #333;
+  font-size: 16px;
+}
+
+/* Search Bar */
+.search-box {
+  width: 100%;
+  max-width: 300px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.search-box:focus {
+  outline: none;
+  border-color: #6466f1;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
+
+/* Table Layout Enhancements */
+.table-container {
+  overflow-x: auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #6466f1;
+  border-radius: 55px;
+}
+
+select {
+  padding: 10px;
+  border: 1px solid #6466f1;
+  border-radius: 55px;
+}
+
+.btn-save {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 55px;
+  background-color: #12d15b;
+  color: #fff;
+}
+
+.btn-save:hover{
+    background-color: green;
+}
+
+.client-info {
+  display: flex;
+  align-items: center;
+}
+
+.avatar-icon {
+  font-size: 36px;
+  color: #4e46e565;
+  display: inline-block; 
+  margin-right: 10px; 
+}
+
+.client-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0 10px;
+  table-layout: auto;
+}
+
+.client-table th,
+.client-table td {
+  padding: 12px;
+  text-align: left;
+  min-width: 150px;
+}
+
+thead {
+  background: #f9fafb;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.search-icon {
+  color: #007bff;
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+.btn-edit,
+.btn-delete,
+.btn-view {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 0.1px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-view {
+  color: #4e46e5db;
+}
+.btn-edit {
+  color: #ffc107;
+}
+.btn-delete {
+  color: #dc3545;
+}

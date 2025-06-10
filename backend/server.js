@@ -33,7 +33,11 @@ mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-mongoose.connection.once("open", () => console.log("🚀 Connected to MongoDB"));
+mongoose.connection.once("open", () => console.log("🛜 Connected to MongoDB"));
+
+mongoose.connection.on("open", () => console.log("🔑 MongoDB Open"));
+mongoose.connection.on("error", (err) => console.error("❌ MongoDB Error:", err));
+
 
 // ✅ Define Client Routes
 const Client = require("./models/clients");
@@ -42,21 +46,12 @@ const clientsRouter = require("./routes/clients");
 
 const dashboardRouter = require("./routes/dashboard");
 
-clientsRouter.post("/", async (req, res) => {
-  try {
-    const newClient = new Client(req.body);
+// async function checkClients() {
+//   const clients = await Client.find();
+//   console.log("Clients in DB:", clients);
+// }
+// checkClients();
 
-    if (!newClient.fullName || !newClient.email) {
-      return res.status(400).json({ message: "fullName and email are required" });
-    }
-
-    const savedClient = await newClient.save();
-    res.status(201).json(savedClient);
-  } catch (err) {
-    console.error("Error saving client:", err);
-    res.status(500).json({ message: "Server error saving client" });
-  }
-});
 
 app.use("/api/clients", clientsRouter);
 
