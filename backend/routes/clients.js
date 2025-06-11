@@ -12,6 +12,7 @@ router.get("/", async (req, res) => {
     res.status(500).json({ error: "Failed to fetch clients" });
   }
 });
+
 // ✅ GET client by ID
 router.get("/:id", async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
@@ -64,8 +65,9 @@ router.put("/:id", async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: "Failed to update client" });
   }
-}); // ✅ DELETE client by ID
+}); 
 
+// ✅ DELETE client by ID
 router.delete("/:id", async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     return res.status(400).json({ error: "Invalid Client ID" });

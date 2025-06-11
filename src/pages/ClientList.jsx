@@ -212,15 +212,15 @@ const ClientList = () => {
                     <td>{client.companyName}</td>
                     <td>{client.email}</td>
                     <td>{client.phone}</td>
-                    <td>
-                      <a className="websiteUrl" href={client.websiteUrl} target="_blank">
+                    <td  className="websiteUrl">
+                      <a href={client.websiteUrl} target="_blank">
                         {client.websiteUrl}
                       </a>
                     </td>
                     <td>{formatDate(client.hostingDate)}</td>
                     <td>{formatDate(client.maintenanceDate)}</td>
-                    <td>R{client.monthlyFee}</td>
                     <td>R{client.devPrice}</td>
+                    <td>R{client.monthlyFee}</td>
                     <td>
                       <span className={`status-badge ${client.status}`}>
                         {client.status}

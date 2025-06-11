@@ -13,20 +13,22 @@ const MainLayout = ({ children }) => {
 
   const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
   const [selectedClient, setSelectedClient] = useState(null);
-  const [refreshKey, setRefreshKey] = useState(0); // 🔹 Force re-render key
 
-  
   const refreshClients = async () => {
     try {
       const response = await fetch("http://localhost:4000/api/clients");
-      console.log("Response status:", response.status); // ✅ Debugging
+      //console.log("Response status:", response.status);
       const data = await response.json();
-      console.log("Fetched Clients:", data); // ✅ Debugging
+      //console.log("Fetched Clients:", data);
       setClients(data);
     } catch (error) {
       console.error("Error refreshing clients:", error);
     }
   };
+
+  useEffect(() => {
+    refreshClients();
+  }, []);
 
   const openDetailsModal = (client) => {
     setSelectedClient(client);
@@ -41,6 +43,7 @@ const MainLayout = ({ children }) => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
+  // save
   const handleSave = async (newClient) => {
     try {
       const response = await fetch("http://localhost:4000/api/clients", {
@@ -53,12 +56,34 @@ const MainLayout = ({ children }) => {
         throw new Error(`Failed to save client: ${response.statusText}`);
       }
 
-      const savedClient = await response.json();
-      setClients((prevClients) => [...prevClients, savedClient]);
+      // Instead of updating local state manually, just refresh everything:
+      await refreshClients();
       setIsModalOpen(false);
     } catch (error) {
       console.error("Failed to save client:", error);
       toast.error("Error saving client");
+    }
+  };
+
+  // delete
+  const handleDelete = async (clientId) => {
+    try {
+      const response = await fetch(
+        `http://localhost:4000/api/clients/${clientId}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`Failed to delete client: ${response.statusText}`);
+      }
+
+      // Refresh full client list after delete
+      await refreshClients();
+    } catch (error) {
+      console.error("Failed to delete client:", error);
+      toast.error("Error deleting client");
     }
   };
 
@@ -83,6 +108,7 @@ const MainLayout = ({ children }) => {
                 openModal,
                 clients,
                 openDetailsModal,
+                handleDelete,
               })
             : children}
         </main>

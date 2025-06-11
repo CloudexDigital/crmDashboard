@@ -23,7 +23,7 @@ const Documents = () => {
                 <div className={`doc-icon ${doc.color}`}>
                   <i className={`fas fa-${doc.icon}`}></i>
                 </div>
-                <div>
+                <div className='doc-info-body'>
                   <h4>{doc.title}</h4>
                   <p>{doc.subtitle}</p>
                 </div>

@@ -161,7 +161,7 @@ tbody tr {
 /* Status color variations */
 .status-badge.active {
   color: #166434;
-  background-color: #DCFCE7;
+  background-color: #dcfce7;
   font-size: 11px;
 }
 
@@ -256,7 +256,7 @@ tbody tr {
   padding-left: 40px;
 }
 
-.delete{
+.delete {
   margin-left: -10px;
   margin-right: -25px;
 }
@@ -279,4 +279,12 @@ tbody tr {
 
 .delete-icon:hover {
   color: #c0392b;
+}
+
+
+@media (max-width: 1024px) {
+  .action-icons {
+    margin-top: 20px;
+    padding-right: 40px;
+  }
 }

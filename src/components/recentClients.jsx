@@ -1,32 +1,14 @@
-import { useState, useEffect } from "react";
 import "../styles/RecentClients.css";
+import ConfirmDeleteModal from "./ConfirmDeleteModal";
+import React, { useState } from "react";
 
-export default function RecentClients({ openModal, openDetailsModal }) {
-  const [clients, setClients] = useState([]);
-
-  const addNotification = (message) => {
-    setNotifications((prev) => [{ id: Date.now(), message }, ...prev]);
-    setHasUnread(true);
-  };
-
-  // ✅ Fetch clients on component mount
-  useEffect(() => {
-    const fetchClients = async () => {
-      try {
-        const response = await fetch("http://localhost:4000/api/clients"); // 🔹 Update URL if needed
-        if (!response.ok) throw new Error("Failed to fetch clients");
-
-        const data = await response.json();
-        console.log("Fetched Clients from API:", data);
-        setClients(data); // 🔹 Store retrieved clients
-      } catch (error) {
-        addNotification("Error fetching clients:");
-        console.error("Error fetching clients:", error);
-      }
-    };
-
-    fetchClients();
-  }, []);
+export default function RecentClients({
+  openModal,
+  clients,
+  openDetailsModal,
+  handleDelete,
+}) {
+  const [clientToDelete, setClientToDelete] = useState(null);
 
   // ✅ Filter upcoming maintenance clients
   const today = new Date();
@@ -65,7 +47,7 @@ export default function RecentClients({ openModal, openDetailsModal }) {
                 </tr>
               ) : (
                 clients.map((client, i) => (
-                  <tr key={i}>
+                  <tr key={client._id}>
                     {/* full name and company name*/}
                     <td>
                       <div className="client-info">
@@ -144,6 +126,7 @@ export default function RecentClients({ openModal, openDetailsModal }) {
                       <button
                         className="delete fas fa-trash-alt delete-icon"
                         title="Delete"
+                        onClick={() => setClientToDelete(client)}
                       ></button>
                     </td>
                   </tr>
@@ -181,7 +164,7 @@ export default function RecentClients({ openModal, openDetailsModal }) {
                 }
 
                 return (
-                  <li key={i} className="maintenance-item">
+                  <li key={client._id} className="maintenance-item">
                     <div className="left-section">
                       <i className="fas fa-cog gear-icon"></i>
                       <div className="maintenance-info">
@@ -210,6 +193,18 @@ export default function RecentClients({ openModal, openDetailsModal }) {
           )}
         </div>
       </div>
+
+      {clientToDelete && (
+        <ConfirmDeleteModal
+          client={clientToDelete}
+          onCancel={() => setClientToDelete(null)}
+          onConfirm={() => {
+            handleDelete(clientToDelete._id);
+            setClientToDelete(null);
+          }}
+        />
+      )}
+      
     </div>
   );
 }

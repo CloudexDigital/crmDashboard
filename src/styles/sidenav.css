@@ -181,3 +181,24 @@ body{
   background-color: #eef2ff;
   color: #4f46e5;
 }
+
+.scripture{
+  margin-top: 27.5rem;
+  font-size: 11px;
+  text-align: center;
+  color: #6b7280;
+  border-bottom: 1px solid #374151;
+}
+
+.version-number{
+  text-align: center;
+  font-size: 10px;
+  margin-top: 20px;
+}
+
+@media(max-width: 1024px){
+  .scripture{
+  margin-top: 26.5rem;
+}
+
+}

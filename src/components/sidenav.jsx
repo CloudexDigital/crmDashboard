@@ -38,10 +38,7 @@ export default function Sidebar({ isOpen, toggleSidebar, openModal }) {
 
         <div className="sidebar-content">
           <div>
-            <button
-              className="add-client-btn"
-              onClick={openModal}
-            >
+            <button className="add-client-btn" onClick={openModal}>
               <i className="fas fa-plus"></i>
               <span>Add New Client</span>
             </button>
@@ -64,7 +61,7 @@ export default function Sidebar({ isOpen, toggleSidebar, openModal }) {
             >
               <i className="fas fa-users"></i> Clients
             </NavLink>
-            <NavLink
+            {/* <NavLink
               to="/main"
               className={({ isActive }) =>
                 `nav-link ${isActive ? "active" : ""}`
@@ -79,7 +76,7 @@ export default function Sidebar({ isOpen, toggleSidebar, openModal }) {
               }
             >
               <i className="fas fa-file-alt"></i> Reports
-            </NavLink>
+            </NavLink> */}
           </nav>
 
           <div className="sidebar-footer">
@@ -95,6 +92,14 @@ export default function Sidebar({ isOpen, toggleSidebar, openModal }) {
             <button className="logout-btn">
               <i className="fas fa-sign-out-alt"></i> Logout
             </button>
+            <div className="scripture">
+              <i className="fas fa-cross"></i>
+              <p>
+                Philippians 4:11–13 <br/> I can do all things through Christ which
+                strengtheneth me.
+              </p>
+            </div>
+            <p className="version-number">v.1.0</p>
           </div>
         </div>
       </div>

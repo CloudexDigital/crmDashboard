@@ -17,7 +17,7 @@ app.options("/api/clients", (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  res.sendStatus(200); // 👈 This prevents 403 errors!
+  res.sendStatus(200);
 });
 
 // ✅ Middleware to Parse JSON
@@ -34,24 +34,15 @@ mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true,
 });
 mongoose.connection.once("open", () => console.log("🛜 Connected to MongoDB"));
-
 mongoose.connection.on("open", () => console.log("🔑 MongoDB Open"));
 mongoose.connection.on("error", (err) => console.error("❌ MongoDB Error:", err));
 
 
-// ✅ Define Client Routes
 const Client = require("./models/clients");
 
 const clientsRouter = require("./routes/clients");
 
 const dashboardRouter = require("./routes/dashboard");
-
-// async function checkClients() {
-//   const clients = await Client.find();
-//   console.log("Clients in DB:", clients);
-// }
-// checkClients();
-
 
 app.use("/api/clients", clientsRouter);
 
