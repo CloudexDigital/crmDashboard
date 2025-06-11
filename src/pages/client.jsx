@@ -1,7 +1,13 @@
+import ClientHeader from "../components/clientReportHeader";
 
 
 const Client = () => {
-  return <h1>Client Page</h1>;
+  return (
+    <div>
+    <ClientHeader/>
+    </div>
+          
+  );
 };
 
 export default Client;

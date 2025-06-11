@@ -80,6 +80,7 @@ select {
   padding: 12px;
   text-align: left;
   min-width: 150px;
+  font-size: 14px;
 }
 
 thead {
@@ -120,4 +121,10 @@ thead {
 }
 .btn-delete {
   color: #dc3545;
+}
+
+.websiteUrl{
+    text-decoration: none;
+    color: #6466f1;
+    font-size: 14px;
 }

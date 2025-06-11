@@ -1,0 +1,150 @@
+.invoice-tracking {
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  margin-top: 20px;
+  margin-left: 15px;
+  width: 94.5%;
+}
+
+.invoice-tracking .header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.invoice-tracking .header h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.invoice-tracking .view-all {
+  font-size: 0.875rem;
+  color: #4f46e5;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.summary-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .summary-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.summary-card {
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.summary-card .summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.summary-card h4 {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.summary-card .amount {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+
+.summary-card .details {
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.summary-card.owed {
+  background-color: #eef2ff;
+  color: #3730a3;
+}
+
+.summary-card.received {
+  background-color: #ecfdf5;
+  color: #065f46;
+}
+
+.summary-card.overdue {
+  background-color: #fef2f2;
+  color: #991b1b;
+}
+
+.table-container {
+  overflow-x: auto;
+  margin-top: 1.5rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #f9fafb;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+th,
+td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+tbody tr {
+  border-top: 1px solid #e5e7eb;
+}
+
+.status {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  display: inline-block;
+}
+
+.status.overdue {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.status.paid {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.status.due {
+  background-color: #fef9c3;
+  color: #92400e;
+}
+
+.action-btn {
+  font-size: 0.875rem;
+  color: #4f46e5;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.blink {
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  50% {
+    background-color: #fef2f2;
+  }
+}

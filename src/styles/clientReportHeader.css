@@ -1,0 +1,226 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.client-header {
+  background-color: rgba(255, 255, 255, 0.506);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
+}
+
+.header-top {
+  padding-left: 1.5rem; /* px-6 */
+  padding-right: 1.5rem;
+  padding-top: 1.5rem; /* pt-6 */
+  padding-bottom: 1rem; /* pb-4 */
+  border-bottom: 1px solid #e5e7eb; /* border-b */
+}
+
+.header-flex {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .header-flex {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.client-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+@media (min-width: 768px) {
+  .client-info {
+    margin-bottom: 0;
+  }
+}
+
+.avatar {
+  height: 4rem; /* 16 * 0.25rem */
+  width: 4rem;
+  border-radius: 9999px; /* rounded-full */
+  background-color: #c7d2fe; /* bg-indigo-100 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4338ca; /* text-indigo-600 */
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 700; /* font-bold */
+  margin-right: 1rem;
+}
+
+.client-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: -4px;
+}
+
+.client-name-fullName {
+  font-size: 14px;
+  font-weight: 100;
+  color: gray;
+  margin-bottom: 2px;
+}
+
+.client-websiteUrl {
+  display: flex;
+  align-items: center;
+}
+
+.websiteUrl {
+  font-size: 12px;
+  color: #6366f1;
+  margin-right: 0.75rem;
+}
+
+.status {
+  font-size: 0.875rem;
+  padding: 0.25rem 0.5rem;
+  background-color: #d1fae5; /* green-100 */
+  color: #065f46; /* green-800 */
+  border-radius: 9999px;
+}
+
+.header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-primary {
+  background-color: #4338ca; /* indigo-600 */
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.btn-primary:hover {
+  background-color: #3730a3; /* indigo-700 */
+}
+
+.btn-primary:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #6366f1; /* indigo-500 ring */
+}
+
+.btn-outline-indigo {
+  background-color: white;
+  color: #4338ca;
+  border: 1px solid #4338ca;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.btn-outline-indigo:hover {
+  background-color: #eef2ff; /* indigo-50 */
+}
+
+.btn-outline-indigo:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #6366f1;
+}
+
+.btn-outline-gray {
+  background-color: white;
+  color: #4b5563; /* gray-600 */
+  border: 1px solid #d1d5db; /* gray-300 */
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.btn-outline-gray:hover {
+  background-color: #f9fafb; /* gray-50 */
+}
+
+.btn-outline-gray:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #6b7280; /* gray-500 */
+}
+
+.email-icon {
+  margin-right: 4px;
+}
+
+.meeting-icon {
+  margin-right: 4px;
+}
+.header-nav {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 1rem;
+}
+
+.nav-links-btn {
+  display: flex;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.nav-link-btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6b7280; /* gray-500 */
+  border: none;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav-link-btn:hover {
+  color: #374151; /* gray-700 */
+  border-bottom-color: #d1d5db; /* gray-300 */
+}
+
+.nav-link-btn.active {
+  color: #4338ca; /* indigo-600 */
+  border-bottom-color: #4338ca;
+  background-color: transparent;
+}
+
+/* Add your custom scrollbar styles here if needed */
+.custom-scrollbar::-webkit-scrollbar {
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #a5b4fc; /* indigo-300 */
+  border-radius: 3px;
+}
+
+.tab-content{
+    margin-top: 20px;
+}
+
+.horizontal-wrapper {
+  display: flex;
+  gap: 2.5rem;
+  width: auto;
+}
+
+.left-column {
+  flex: 1;
+  width: auto;
+}
+
+.right-column {
+  width: auto;
+  margin-top: 8px;
+}
+

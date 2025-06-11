@@ -15,6 +15,7 @@ const MainLayout = ({ children }) => {
   const [selectedClient, setSelectedClient] = useState(null);
   const [refreshKey, setRefreshKey] = useState(0); // 🔹 Force re-render key
 
+  
   const refreshClients = async () => {
     try {
       const response = await fetch("http://localhost:4000/api/clients");

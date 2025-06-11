@@ -1,8 +1,12 @@
 import { useState } from "react";
+import { useContext } from "react";
+import { NotificationContext } from '../context/NotificationContext';
 import { toast } from "react-toastify";
 import "../styles/clientModel.css";
 
 const AddClientModal = ({ isOpen, onClose, onSave }) => {
+const { addNotification } = useContext(NotificationContext);
+
   const [formData, setFormData] = useState({
     fullName: "",
     companyName: "",
@@ -37,6 +41,8 @@ const AddClientModal = ({ isOpen, onClose, onSave }) => {
 
     onSave(client);
     toast.success("Client added successfully!", { position: "top-right" }); // ✅ Toast notification
+
+      addNotification(`New client ${formData.fullName} has been added.`);
 
     onClose();
   };

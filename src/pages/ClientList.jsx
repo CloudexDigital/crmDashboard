@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../styles/clientList.css";
 
 const ClientList = () => {
@@ -7,6 +7,7 @@ const ClientList = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [editMode, setEditMode] = useState(null);
   const [editedClient, setEditedClient] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchClients = async () => {
@@ -108,7 +109,16 @@ const ClientList = () => {
           </thead>
           <tbody>
             {filteredClients.map((client) => (
-              <tr key={client._id}>
+              <tr
+                key={client._id}
+                onClick={() => {
+                  if (editMode !== client._id)
+                    navigate(`/client/${client._id}`);
+                }}
+                style={{
+                  cursor: editMode !== client._id ? "pointer" : "default",
+                }}
+              >
                 {editMode === client._id ? (
                   <>
                     <td className="client-info">
@@ -203,7 +213,7 @@ const ClientList = () => {
                     <td>{client.email}</td>
                     <td>{client.phone}</td>
                     <td>
-                      <a href={client.websiteUrl} target="_blank">
+                      <a className="websiteUrl" href={client.websiteUrl} target="_blank">
                         {client.websiteUrl}
                       </a>
                     </td>

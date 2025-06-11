@@ -110,3 +110,99 @@
   color: #9ca3af;
   padding-top: 3px;
 }
+
+
+/* notification */
+.notification-wrapper {
+  position: relative;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.notification-dropdown {
+  position: absolute;
+  right: 0;
+  top: 52px;
+  width: 300px;
+  background: #ffffff;
+  border: 1px solid #d1d5db; /* softer gray */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  z-index: 1000;
+  overflow: hidden;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  transform-origin: top right;
+}
+
+.dropdown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  font-weight: 700;
+  background-color: #f9fafb;
+  font-size: 1rem;
+  color: #111827;
+}
+
+.dropdown-header button {
+  font-size: 0.9rem;
+  color: #6b7280;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.dropdown-header button:hover {
+  color: #1f2937;
+  background-color: #e5e7eb;
+}
+
+.dropdown-content {
+  max-height: 280px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #9ca3af transparent;
+}
+
+.dropdown-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdown-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dropdown-content::-webkit-scrollbar-thumb {
+  background-color: #9ca3af;
+  border-radius: 3px;
+}
+
+.notification-item {
+  padding: 16px 20px;
+  border-bottom: 1px solid #f3f4f6;
+  font-size: 0.95rem;
+  color: #374151;
+  cursor: default;
+  transition: background-color 0.15s;
+}
+
+.notification-item:hover {
+  background-color: #f3f4f6;
+}
+
+.notification-item:last-child {
+  border-bottom: none;
+}
+
+.no-notifications {
+  padding: 20px;
+  text-align: center;
+  color: #9ca3af;
+  font-size: 0.9rem;
+  font-style: italic;
+  user-select: none;
+}
