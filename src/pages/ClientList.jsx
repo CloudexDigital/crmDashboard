@@ -12,7 +12,7 @@ const ClientList = () => {
   useEffect(() => {
     const fetchClients = async () => {
       try {
-        const response = await fetch("http://localhost:4000/api/clients");
+        const response = await fetch("/api/clients");
         if (!response.ok)
           throw new Error(`HTTP Error! Status: ${response.status}`);
 
@@ -44,7 +44,7 @@ const ClientList = () => {
   const handleSaveClick = async () => {
     try {
       const response = await fetch(
-        `http://localhost:4000/api/clients/${editedClient._id}`,
+        `/api/clients/${editedClient._id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },

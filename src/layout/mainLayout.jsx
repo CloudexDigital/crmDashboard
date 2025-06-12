@@ -16,7 +16,7 @@ const MainLayout = ({ children }) => {
 
   const refreshClients = async () => {
     try {
-      const response = await fetch("http://localhost:4000/api/clients");
+      const response = await fetch("/api/clients");
       //console.log("Response status:", response.status);
       const data = await response.json();
       //console.log("Fetched Clients:", data);
@@ -46,7 +46,7 @@ const MainLayout = ({ children }) => {
   // save
   const handleSave = async (newClient) => {
     try {
-      const response = await fetch("http://localhost:4000/api/clients", {
+      const response = await fetch("/api/clients", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newClient),
@@ -69,7 +69,7 @@ const MainLayout = ({ children }) => {
   const handleDelete = async (clientId) => {
     try {
       const response = await fetch(
-        `http://localhost:4000/api/clients/${clientId}`,
+        `/api/clients/${clientId}`,
         {
           method: "DELETE",
         }

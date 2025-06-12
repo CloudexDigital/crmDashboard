@@ -15,7 +15,7 @@ const ClientHeader = () => {
   useEffect(() => {
     const fetchClient = async () => {
       try {
-        const res = await fetch(`http://localhost:4000/api/clients/${id}`);
+        const res = await fetch(`/api/clients/${id}`);
         const data = await res.json();
         setClient(data);
       } catch (error) {

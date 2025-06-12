@@ -26,7 +26,7 @@ const ClientDetailsModal = ({ isOpen, onClose, client, refreshClients }) => {
   const handleSave = async () => {
     try {
       const response = await fetch(
-        `http://localhost:4000/api/clients/${clientForm._id}`,
+        `/api/clients/${clientForm._id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
