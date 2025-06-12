@@ -1,4 +1,4 @@
-import "../styles/ConfirmDeleteModal.css";
+import "../styles/confirmDeleteModal.css";
 
 export default function ConfirmDeleteModal({ client, onCancel, onConfirm }) {
   return (
