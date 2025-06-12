@@ -1,4 +1,4 @@
-import { connectToDatabase } from "../../lib/dbConnect"; 
+import { dbConnect } from '../dbConnect';
 import Client from "../../lib/models/clients";
 
 export default async function handler(req, res) {
@@ -6,7 +6,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  await connectToDatabase();
+  await dbConnect();
 
   try {
     const totalClients = await Client.countDocuments({});
