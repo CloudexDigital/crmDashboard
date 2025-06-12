@@ -1,4 +1,4 @@
-import "../styles/RecentClients.css";
+import "../styles/recentClients.css";
 import ConfirmDeleteModal from "./ConfirmDeleteModal";
 import React, { useState } from "react";
 

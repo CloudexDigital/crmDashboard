@@ -1,4 +1,3 @@
-import React from "react";
 import "../styles/ConfirmDeleteModal.css";
 
 export default function ConfirmDeleteModal({ client, onCancel, onConfirm }) {
