@@ -1,4 +1,10 @@
 import "../styles/topnav.css";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  UserButton,
+} from "@clerk/clerk-react";
 import { useNotifications } from "../context/NotificationContext";
 import { useState } from "react";
 
@@ -51,6 +57,17 @@ const TopNav = ({ toggleSidebar }) => {
           <input type="text" placeholder="Search..." />
           <i className="fas fa-search"></i>
         </div>
+
+        <div className="auth-section">
+          <SignedOut>
+            <SignInButton redirectUrl="/sign-in"  />
+          </SignedOut>
+
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+        </div>
+
       </div>
     </header>
   );

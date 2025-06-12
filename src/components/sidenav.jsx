@@ -1,15 +1,7 @@
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
 import "../styles/sidenav.css";
 
 export default function Sidebar({ isOpen, toggleSidebar, openModal }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleSaveClient = () => {
-    // Save logic (optional)
-    setIsModalOpen(false);
-  };
-
   return (
     <>
       {isOpen && (
@@ -36,13 +28,12 @@ export default function Sidebar({ isOpen, toggleSidebar, openModal }) {
           </button>
         </div>
 
+        {/* Make sidebar-content flex-grow and scrollable */}
         <div className="sidebar-content">
-          <div>
-            <button className="add-client-btn" onClick={openModal}>
-              <i className="fas fa-plus"></i>
-              <span>Add New Client</span>
-            </button>
-          </div>
+          <button className="add-client-btn" onClick={openModal}>
+            <i className="fas fa-plus"></i>
+            <span>Add New Client</span>
+          </button>
 
           <nav className="sidebar-nav">
             <NavLink
@@ -61,46 +52,19 @@ export default function Sidebar({ isOpen, toggleSidebar, openModal }) {
             >
               <i className="fas fa-users"></i> Clients
             </NavLink>
-            {/* <NavLink
-              to="/main"
-              className={({ isActive }) =>
-                `nav-link ${isActive ? "active" : ""}`
-              }
-            >
-              <i className="fas fa-tools"></i> Maintenance
-            </NavLink>
-            <NavLink
-              to="/rep"
-              className={({ isActive }) =>
-                `nav-link ${isActive ? "active" : ""}`
-              }
-            >
-              <i className="fas fa-file-alt"></i> Reports
-            </NavLink> */}
           </nav>
+        </div>
 
-          <div className="sidebar-footer">
-            <div className="user-info">
-              <div className="user-avatar">
-                <i className="fas fa-user"></i>
-              </div>
-              <div className="user-text">
-                <p>Admin User</p>
-                <p>admin@cloudex.digital</p>
-              </div>
-            </div>
-            <button className="logout-btn">
-              <i className="fas fa-sign-out-alt"></i> Logout
-            </button>
-            <div className="scripture">
-              <i className="fas fa-cross"></i>
-              <p>
-                Philippians 4:11–13 <br/> I can do all things through Christ which
-                strengtheneth me.
-              </p>
-            </div>
-            <p className="version-number">v.1.0</p>
+        {/* Footer outside sidebar-content to stick to bottom */}
+        <div className="sidebar-footer">
+          <div className="scripture">
+            <i className="fas fa-cross"></i>
+            <p>
+              Philippians 4:11–13 <br /> I can do all things through Christ which
+              strengtheneth me.
+            </p>
           </div>
+          <p className="version-number">v.1.0</p>
         </div>
       </div>
     </>
