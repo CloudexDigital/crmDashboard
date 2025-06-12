@@ -1,24 +1,22 @@
 const mongoose = require("mongoose");
 
 const clientSchema = new mongoose.Schema({
-  fullName: { type: String },
-  companyName: { type: String },
-  email: { type: String },
-  phone: { type: String },
-  websiteUrl: { type: String },
-  hostingDate: { type: Date },
-  maintenanceDate: { type: Date },
-  monthlyFee: { type: Number },
-  devPrice: { type: Number },
-  notes: { type: String },
+  fullName: String,
+  companyName: String,
+  email: String,
+  phone: String,
+  websiteUrl: String,
+  hostingDate: Date,
+  maintenanceDate: Date,
+  monthlyFee: Number,
+  devPrice: Number,
+  notes: String,
   status: {
     type: String,
     enum: ["active", "inactive", "pending", "on-hold"],
     default: "active",
   },
-  hasMaintenance: { type: Boolean },
-  createdAt: { type: Date, default: Date.now },  // ✅ I recommend always adding this
+  hasMaintenance: Boolean,
 });
 
-// ✅ Serverless-safe export
-module.exports = mongoose.models.Client || mongoose.model("Client", clientSchema);
+module.exports = mongoose.model("Clients", clientSchema);
