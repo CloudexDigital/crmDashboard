@@ -1,5 +1,5 @@
 import { connectToDatabase } from "../../lib/dbConnect"; 
-import Client from "../../lib/models/clients"; // your Client model
+import Client from "../../lib/models/clients";
 
 export default async function handler(req, res) {
   if (req.method !== "GET") {
