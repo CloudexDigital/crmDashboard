@@ -1,4 +1,4 @@
-import "../styles/topnav.css"
+import "../styles/topNav.css"
 import {
   SignedIn,
   SignedOut,
