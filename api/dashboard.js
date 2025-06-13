@@ -1,5 +1,5 @@
 import { dbConnect } from '../lib/dbConnect.js';
-import Client from '../../lib/models/clients';
+import Client from '../lib/models/clients.js';
 
 export default async function handler(req, res) {
   if (req.method !== "GET") {
