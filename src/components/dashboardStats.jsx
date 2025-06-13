@@ -18,7 +18,7 @@ const DashboardStats = () => {
         const data = await response.json();
         setStats(data); // ✅ Update state with fetched data
       } catch (error) {
-        console.error("Error fetching dashboard stats bro:", error);
+        console.error("Error fetching dashboard stats bro", error);
       }
     };
 
