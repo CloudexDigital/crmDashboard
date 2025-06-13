@@ -1,4 +1,4 @@
-import { dbConnect } from '../../lib/dbConnect';
+import { dbConnect } from '../lib/dbConnect';
 import Client from '../../lib/models/clients';
 
 export default async function handler(req, res) {
@@ -9,7 +9,7 @@ export default async function handler(req, res) {
       const clients = await Client.find();
       res.status(200).json(clients);
     } catch (err) {
-      res.status(500).json({ error: 'Failed to fetch clients' });
+      res.status(500).json({ error: 'Failed to fetch clients yoh' });
     }
   } else if (req.method === 'POST') {
     try {
