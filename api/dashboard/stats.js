@@ -26,6 +26,7 @@ export default async function handler(req, res) {
       totalRevenue: totalRevenueAgg.length > 0 ? totalRevenueAgg[0].total : 0,
     });
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch dashboard stats yo" });
+    res.status(500).json({ error: "Failed to fetch dashboard stats" });
   }
 }
+
