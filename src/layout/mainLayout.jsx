@@ -22,7 +22,7 @@ const MainLayout = ({ children }) => {
       //console.log("Fetched Clients:", data);
       setClients(data);
     } catch (error) {
-      console.error("Error refreshing clients:", error);
+      console.error("Error refreshing clients bro:", error);
     }
   };
 
@@ -68,12 +68,9 @@ const MainLayout = ({ children }) => {
   // delete
   const handleDelete = async (clientId) => {
     try {
-      const response = await fetch(
-        `/api/clients/${clientId}`,
-        {
-          method: "DELETE",
-        }
-      );
+      const response = await fetch(`/api/clients/${clientId}`, {
+        method: "DELETE",
+      });
 
       if (!response.ok) {
         throw new Error(`Failed to delete client: ${response.statusText}`);
