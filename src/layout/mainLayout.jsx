@@ -93,7 +93,7 @@ const MainLayout = ({ children }) => {
 
   return loading ? (
     <div className="app-loader">
-      <img src="/favicon_io/favicon-32x32.png" alt="Loading..." />
+      <img src="assets/CloudexDigitalLoader.svg" alt="Loading..." />
       <p>Loading Cloudex dashboard...</p>
     </div>
   ) : (
