@@ -52,6 +52,14 @@ export default function Sidebar({ isOpen, toggleSidebar, openModal }) {
             >
               <i className="fas fa-users"></i> Clients
             </NavLink>
+            <a
+              href="https://fennec.aserv.co.za:2096/cpsess9039067129/3rdparty/roundcube/?_task=mail&_mbox=INBOX#"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nav-link"
+            >
+              <i className="fas fa-envelope"></i> Email
+            </a>
           </nav>
         </div>
 
@@ -60,8 +68,8 @@ export default function Sidebar({ isOpen, toggleSidebar, openModal }) {
           <div className="scripture">
             <i className="fas fa-cross"></i>
             <p>
-              Philippians 4:11–13 <br /> I can do all things through Christ which
-              strengtheneth me.
+              Philippians 4:11–13 <br /> I can do all things through Christ
+              which strengtheneth me.
             </p>
           </div>
           <p className="version-number">v.1.0</p>
