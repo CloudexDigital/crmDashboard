@@ -35,3 +35,8 @@ createRoot(document.getElementById("root")).render(
     </ClerkProvider>
   </StrictMode>
 );
+
+
+// Remove loader once app is mounted
+const globalLoader = document.getElementById('global-loader');
+if (globalLoader) globalLoader.remove();

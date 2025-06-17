@@ -24,3 +24,20 @@ html {
     margin-left: 0;
   }
 }
+
+
+.app-loader {
+  position: fixed;
+  inset: 0;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  font-family: sans-serif;
+}
+.app-loader img {
+  width: 32px;
+  margin-bottom: 10px;
+}

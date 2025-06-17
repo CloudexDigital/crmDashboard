@@ -10,19 +10,21 @@ const MainLayout = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [clients, setClients] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
   const [selectedClient, setSelectedClient] = useState(null);
 
   const refreshClients = async () => {
     try {
+      setLoading(true); // Show loader
       const response = await fetch("/api/clients");
-      //console.log("Response status:", response.status);
       const data = await response.json();
-      //console.log("Fetched Clients:", data);
       setClients(data);
     } catch (error) {
       console.error("Error refreshing clients bro:", error);
+    } finally {
+      setLoading(false); // Hide loader
     }
   };
 
@@ -58,6 +60,7 @@ const MainLayout = ({ children }) => {
 
       // Instead of updating local state manually, just refresh everything:
       await refreshClients();
+
       setIsModalOpen(false);
     } catch (error) {
       console.error("Failed to save client:", error);
@@ -88,7 +91,12 @@ const MainLayout = ({ children }) => {
     setIsSidebarOpen((prev) => !prev);
   };
 
-  return (
+  return loading ? (
+    <div className="app-loader">
+      <img src="/favicon_io/favicon-32x32.png" alt="Loading..." />
+      <p>Loading dashboard...</p>
+    </div>
+  ) : (
     <>
       <Sidebar
         isOpen={isSidebarOpen}
